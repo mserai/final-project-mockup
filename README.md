@@ -3,7 +3,7 @@
 
 <hr>
 
-<img class="ui small image" src="./Landing.JPG">
+<img src="./Landing.JPG">
 
 <hr>
 
