@@ -5,43 +5,43 @@
       "name": "InterestCollection",
       "contents": [
         {
-          "name": "Software Engineering",
+          "name": "111",
           "description": "Techniques for development of high quality systems"
         },
         {
-          "name": "Algorithms",
+          "name": "141",
           "description": "A set of rules to be followed in computation"
         },
         {
-          "name": "Mobile Networks",
+          "name": "211",
           "description": "Networks created using mobile devices."
         },
         {
-          "name": "Sailing",
+          "name": "212",
           "description": ""
         },
         {
-          "name": "Mars",
+          "name": "241",
           "description": ""
         },
         {
-          "name": "Imu Cooking",
+          "name": "311",
           "description": "Hawaiian practice of cooking in a pit."
         },
         {
-          "name": "Scuba",
+          "name": "314",
           "description": ""
         },
         {
-          "name": "Photography",
+          "name": "321",
           "description": ""
         },
         {
-          "name": "Wind surfing",
+          "name": "332",
           "description": ""
         },
         {
-          "name": "Psychology",
+          "name": "355",
           "description": ""
         },
         {

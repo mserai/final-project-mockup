@@ -1,0 +1,28 @@
+<template name="Rate_Page">
+
+  {{#if Template.subscriptionsReady}}
+
+    <div class="ui text container segment">
+      <div class="ui dividing header">
+        Rate a Session
+      </div>
+      <form class="ui equal width form profile-data-form {{ successClass }} {{ errorClass }}">
+
+        {{> Select_Form_Control label="Select Date:" required=true options=day errorMessage=(fieldError "day") }}
+        {{> Select_Form_Control label="Select Session:" required=true options=time errorMessage=(fieldError "time") }}
+        {{> TextArea_Form_Control label="Comments" placeholder="Provide Comments Here" errorMessage=(fieldError "comments")}}
+
+
+
+        <button class="ui primary button" type="submit">Submit</button>
+        {{#if displaySuccessMessage}}
+          <div class="ui success message">
+            <p>Profile data successfully updated.</p>
+          </div>
+        {{/if}}
+      </form>
+    </div>
+
+  {{/if}}
+
+</template>

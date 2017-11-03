@@ -23,9 +23,12 @@ class ProfileCollection extends BaseCollection {
       // Remainder are optional
       firstName: { type: String, optional: true },
       lastName: { type: String, optional: true },
+      phone: { type: String, optional: true },
       interests: { type: Array, optional: true },
       'interests.$': { type: String },
+      email: { type: String, optional: true },
       picture: { type: SimpleSchema.RegEx.Url, optional: true },
+      courses: { type: Array, optional: true },
     }, { tracker: Tracker }));
   }
 

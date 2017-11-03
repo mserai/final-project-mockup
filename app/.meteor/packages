@@ -50,3 +50,4 @@ insecure@1.0.7
 
 # Tests
 meteortesting:mocha
+fullcalendar:fullcalendar

@@ -7,30 +7,22 @@
       Profile
     </div>
     <form class="ui equal width form profile-data-form {{ successClass }} {{ errorClass }}">
-
       <div class="fields">
-        {{> Text_Form_Control label="First" placeholder="Philip" value=profile.firstName errorMessage=(fieldError "firstName")}}
-        {{> Text_Form_Control label="Last" placeholder="Johnson" value=profile.lastName errorMessage=(fieldError "lastName")}}
+        {{> Text_Form_Control label="First" required=true placeholder="Michael" value=profile.firstName errorMessage=(fieldError "firstName")}}
+        {{> Text_Form_Control label="Last" required=true placeholder="Serai" value=profile.lastName errorMessage=(fieldError "lastName")}}
 
       </div>
 
       <div class="field">
         {{> Text_Form_Control label="Picture" placeholder="http://foo.com/shot.jpg" value=profile.picture errorMessage=(fieldError "picture")}}
+        {{> Text_Form_Control label="Phone" placeholder="808-226-0450" value=profile.picture errorMessage=(fieldError "phone")}}
+        {{> Text_Form_Control label="Email" required=true placeholder="mserai@hawaii.edu" value=profile.picture errorMessage=(fieldError "email")}}
+        {{> Checkbox_Form_Control label="Courses Taken:" checkboxes=courses }}
       </div>
 
       <div class="field">
-        {{> Select_Form_Control label="Interests" options=interests errorMessage=(fieldError "interests") multiple=true }}
+        {{> Select_Form_Control label="Courses Enrolled:" options=interests errorMessage=(fieldError "interests") multiple=true }}
       </div>
-
-      <div class="fields">
-
-        {{> Social_Network_Form_Control label="Github" icon="github" placeholder="pmjohnson" value=profile.github errorMessage=(fieldError "github")}}
-        {{> Social_Network_Form_Control label="Facebook" icon="facebook" placeholder="pmjohnson" value=profile.facebook errorMessage=(fieldError "facebook")}}
-        {{> Social_Network_Form_Control label="Instagram" icon="instagram" placeholder="pmjohnson" value=profile.instagram errorMessage=(fieldError "instagram")}}
-
-      </div>
-
-      {{> TextArea_Form_Control label="Bio" value=profile.bio placeholder="Short bio statement here" errorMessage=(fieldError "bio")}}
 
 
       <button class="ui primary button" type="submit">Submit</button>

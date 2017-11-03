@@ -8,9 +8,22 @@ import { Interests } from '/imports/api/interest/InterestCollection';
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
-export const coursesList = ['111', '141', '211', '212', '241', '311', '314', '321', '332', '355'];
+export const dayObjects = [{ label: 'Monday', value: '7' },
+                          { label: 'Tuesday', value: '6' },
+                          { label: 'Wednesday', value: '5' },
+                          { label: 'Thursday', value: '4' },
+                          { label: 'Friday', value: '3' },
+                          { label: 'Saturday', value: '2' },
+                          { label: 'Sunday', value: '1' }];
+export const timeObjects = [{ label: '1', value: '7' },
+                          { label: '2', value: '6' },
+                          { label: '3', value: '5' },
+                          { label: '4', value: '4' },
+                          { label: '5', value: '3' },
+                          { label: '6', value: '2' },
+                          { label: '7', value: '1' }];
 
-Template.Profile_Page.onCreated(function onCreated() {
+Template.Rate_Page.onCreated(function onCreated() {
   this.subscribe(Interests.getPublicationName());
   this.subscribe(Profiles.getPublicationName());
   this.messageFlags = new ReactiveDict();
@@ -19,7 +32,7 @@ Template.Profile_Page.onCreated(function onCreated() {
   this.context = Profiles.getSchema().namedContext('Profile_Page');
 });
 
-Template.Profile_Page.helpers({
+Template.Rate_Page.helpers({
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
   },
@@ -36,37 +49,26 @@ Template.Profile_Page.helpers({
     const profile = Profiles.findDoc(FlowRouter.getParam('username'));
     const selectedInterests = profile.interests;
     return profile && _.map(Interests.findAll(),
-            function makeInterestObject(interest) {
-              return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
-            });
+        function makeInterestObject(interest) {
+          return { label: interest.name, selected: _.contains(selectedInterests, interest.name) };
+        });
   },
-  courses() {
-    return _.map(coursesList, function makeCourseObject(course) { return { label: course }; });
+  day() {
+    return dayObjects;
+  },
+  time() {
+    return timeObjects;
   },
 });
 
 
-Template.Profile_Page.events({
+Template.Rate_Page.events({
   'submit .profile-data-form'(event, instance) {
     event.preventDefault();
-    const firstName = event.target.First.value;
-    const lastName = event.target.Last.value;
-    const email = event.target.Email.value;
+    const day = event.target.Day.value;
+    const time = event.target.Last.value;
     const username = FlowRouter.getParam('username'); // schema requires username.
-    const picture = event.target.Picture.value;
-    const phone = event.target.Phone.value;
-    const courses = [];
-    _.each(coursesList, function setCourse(course) {
-      if (event.target[course].checked) {
-        courses.push(event.target[course].value);
-      }
-    });
-    const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
-    const interests = _.map(selectedInterests, (option) => option.value);
-
-    const updatedProfileData = { firstName, lastName, email, picture, phone, courses, interests,
-      username };
-
+    const updatedProfileData = { day, time, username };
     // Clear out any old validation errors.
     instance.context.reset();
     // Invoke clean so that updatedProfileData reflects what will be inserted.

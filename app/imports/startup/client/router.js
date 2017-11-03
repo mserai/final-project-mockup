@@ -67,6 +67,13 @@ userRoutes.route('/filter', {
     BlazeLayout.render('User_Layout', { main: filterPageRouteName });
   },
 });
+export const ratePageRouteName = 'Rate_Page';
+userRoutes.route('/rate', {
+  name: ratePageRouteName,
+  action() {
+    BlazeLayout.render('User_Layout', { main: ratePageRouteName });
+  },
+});
 
 /*                        MISC ROUTES                       */
 FlowRouter.notFound = {
